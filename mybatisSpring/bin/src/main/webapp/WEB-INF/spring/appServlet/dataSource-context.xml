@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- DBCP 데이터커넥션 풀 -->
+	<bean class="com.zaxxer.hikari.HikariConfig" id="hikariConfig">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:xe" />
+		<property name="username" value="micol" />
+		<property name="password" value="1234" />
+
+	</bean>
+	
+	<bean class="com.zaxxer.hikari.HikariDataSource" id="dataSource">
+	<constructor-arg ref="hikariConfig" />
+	</bean>
+	
+	
+	<!-- my bastis -->
+	
+	<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactoryBean">
+	<property name="dataSource" ref="dataSource" />
+	
+	</bean>
+	<!--                                      ▽여기에 패키지이름적어줘라 -->
+	<mybatis-spring:scan base-package="co.mybatis.prj.**.map"/>
+</beans>
