@@ -11,7 +11,7 @@ import co.mybatis.prj.member.vo.MemberVO;
 @Controller
 public class MemberController {
 	@Autowired
-	private MemberService service; //dao를 통해 Repository에서 결과를 가져온다.
+	private MemberService service;   
 	
 	@RequestMapping("/memberList.do")
 	public String memberList(Model model) {
