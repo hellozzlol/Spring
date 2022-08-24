@@ -11,6 +11,7 @@
 	Hello world!  
 </h1>
 
-<a href="memberLoginForm.do">로그인</a>
+<a href="memberLoginForm.do">로그인</a> <br>
+<a href="noticeList.do">공지사항</a>
 </body>
 </html>
