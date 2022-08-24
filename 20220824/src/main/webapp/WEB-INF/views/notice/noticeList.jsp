@@ -15,13 +15,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>공지사항리스트</h1>
+	<h1 align="left">공지사항리스트</h1>
 	<article>
 		<div class="container">
 			<div class="table-responsive">
+
 				<table class="table table-striped table-sm">
 					<thead>
-						<tr>
+						<tr align="center">
 							<th>NO</th>
 							<th>작성자</th>
 							<th>글제목</th>
@@ -34,7 +35,7 @@
 
 
 						<c:forEach items="${notices }" var="n">
-							<tr>
+							<tr align="center">
 								<td>${n.notice_id}</td>
 								<td>${n.notice_writer}</td>
 								<td>${n.notice_title}</td>
@@ -45,12 +46,8 @@
 
 
 					</tbody>
-
-
-
-
 				</table>
-					<a href="noticeForm.do">글 등록</a>
+				<a href="noticeForm.do"><button class="btn btn-primary">글등록</button></a>
 			</div>
 		</div>
 	</article>
