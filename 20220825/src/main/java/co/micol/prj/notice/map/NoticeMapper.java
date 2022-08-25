@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.Select;
 import co.micol.prj.notice.service.NoticeVO;
 
 public interface NoticeMapper {
-	//이렇게 스면 mapper안만들어줘도 되는데 마이바티스 속성이라 안쓰는걸 권장함.
+	//이렇게 쓰면 mapper안만들어줘도 되는데 마이바티스 속성이라 안쓰는걸 권장함.
 	// 조인 또는 vo 객체를 만들지 않고 사용할 때
 	
 	@Select("select * from notice")
