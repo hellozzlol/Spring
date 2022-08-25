@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.micol.prj.notice.map.NoticeMapper">
+
+
+
+	<select id="noticeSelect"
+		resultType="co.micol.prj.notice.service.NoticeVO">
+		SELECT NOTICE_ID,
+		NOTICE_WRITER,
+		NOTICE_TITLE,
+		NOTICE_SUBJECT,
+		NOTICE_DATE,
+		NOTICE_HIT,
+		NOTICEATTECH,
+		NOTICEATTECHDIR
+
+		FROM NOTICE
+		WHERE NOTICE_ID =
+		#{noticeId}
+
+	</select>
+
+	<insert id="noticeInsert">
+		<selectKey keyProperty="noticeId" order="BEFORE"
+			resultType="int">
+			SELECT
+			CASE WHEN MAX(NOTICE_ID) IS NULL THEN 1 ELSE
+			MAX(NOTICE_ID)+1
+			END AS ID
+			FROM NOTICE
+		</selectKey>
+		INSERT INTO NOTICE
+		VALUES(#{noticeId},#{noticeWriter},#{noticeTitle},#{noticeSubject},#{noticeDate},
+		0,#{noticeAttech},#{noticeAttechDir})
+	</insert>
+	<update id="noticeUpdate">
+		update notice
+		<set>
+			<if test="noticeWriter != null">NOTICE_WRITER = #{noticeWriter},</if>
+			<if test="noticeTitle != null">NOTICE_TITLE = #{noticeTitle},</if>
+			<if test="noticeSubject != null">NOTICE_SUBJECT = #{noticeSubject},</if>
+			<if test="noticeDate != null">NOTICE_DATE = #{noticeDate},</if>
+			<if test="noticeAttech != null">NOTICEATTECH = #{noticeAttech},</if>
+			<if test="noticeAttechDir != null">NOTICEATTECHDIR = #{noticeAttechDir}</if>
+		</set>
+		
+			where notice_id = #{noticeId}
+		
+
+
+	</update>
+	<delete id="noticeDelete"></delete>
+
+	<select id="noticeSearch" resultType="co.micol.prj.notice.service.NoticeVO">
+	select * from notice
+	where
+	<choose>
+	<when test="key == 1">notice_title like '%' || #{val}||'%'</when>
+	<when test="key == 2">notice_subject like '%' || #{val}||'%'</when>
+	<when test="key == 3">notice_writer like '%' || #{val}||'%'</when>
+	</choose>
+	
+	
+	
+	</select>
+
+
+
+
+</mapper>
