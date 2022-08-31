@@ -69,5 +69,18 @@
 	UPDATE NOTICE SET NOTICE_HIT = NOTICE_HIT + 1 WHERE NOTICE_ID = #{noticeId}
 </update>
 
+<select id="getListwithPaging" resultType="co.micol.prj.notice.service.NoticeVO">
+<![CDATA[
+
+SELECT /*+INDEX_DESC(NOTICE)*/
+ROWNUM NOTICE_ID,NOTICE_WRITER,NOTICE_TITLE,NOTICE_SUBJECT,NOTICE_DATE,NOTICE_HIT,NOTICEATTECH,NOTICEATTECHDIR
+FROM NOTICE
+WHERE ROWNUM <=10;
+where notice_id >10;
+]]>
+</select>
+
+
+
 
 </mapper>

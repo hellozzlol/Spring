@@ -6,7 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
-
+import co.micol.prj.notice.service.Criteria;
 import co.micol.prj.notice.service.NoticeVO;
 
 public interface NoticeMapper {
@@ -16,6 +16,8 @@ public interface NoticeMapper {
 	@Select("select * from notice")
 	
 		List<Map<String, Object>> noticeSelectList();
+	
+		public List<NoticeVO> getListwithPaging(Criteria cri);
 
 		NoticeVO noticeSelect(NoticeVO vo);
 

@@ -183,7 +183,8 @@ tr:last-child td:last-child {
 	
 		function searchCall() {
 			  let key = document.getElementById('key').value;
-		     let val = document.getElementById('val').value;
+		      let val = document.getElementById('val').value;
+		     
 		     
 		     $.ajax({
 		    	url : "ajaxSearch.do",

@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import co.micol.prj.notice.service.Criteria;
 import co.micol.prj.notice.service.NoticeService;
 import co.micol.prj.notice.service.NoticeVO;
 
@@ -104,4 +105,11 @@ public class NoticeContoller {
 		return"notice/ajaxTest";
 	}
 
+	
+	//페이징
+	
+	@GetMapping("/list")
+	public void list(Criteria cri, Model model) {
+		model.addAttribute("list",ns.getList(cri));
+	}
 }

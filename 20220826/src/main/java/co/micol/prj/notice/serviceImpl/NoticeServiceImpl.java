@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import co.micol.prj.notice.map.NoticeMapper;
+import co.micol.prj.notice.service.Criteria;
 import co.micol.prj.notice.service.NoticeService;
 import co.micol.prj.notice.service.NoticeVO;
 
@@ -54,6 +55,12 @@ public class NoticeServiceImpl implements NoticeService {
 	public int noticeHitUpdate(NoticeVO vo) {
 		// 조회수 
 		return map.noticeHitUpdate(vo);
+	}
+
+	@Override
+	public List<NoticeVO> getList(Criteria cri) {
+		// 페이징
+		return map.getListwithPaging(cri);
 	}
 
 }

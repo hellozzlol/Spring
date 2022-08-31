@@ -22,6 +22,9 @@ public interface NoticeService {
 	//제목에 어떤내용이 들어있으면 다 불러오라(내용도 마찬가지)
 	List<NoticeVO> noticeSearch(String key, String val);
 	
+	//페이징
+	public List<NoticeVO> getList(Criteria cri);
+	
  
   
 }
